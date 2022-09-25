@@ -5,13 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue 3 basic</title>
+
+    <style>
+        .box{
+            background: red;
+            width: 250px;
+            height: 250px;
+        }
+        .box1{
+            background: rgb(0, 255, 140);
+            width: 250px;
+            height: 250px;
+        }
+    </style>
     
 
 </head>
 <body>
     <div id="app">
         {{green}}
+
+        <input v-model="green"/>
+
+        <hr/>
+        <div v-if="isVisible" class="box"></div>
+        <hr/>
+        <div v-show="isVisibleshow"  class="box1"></div>
    </div>
+   
 
   
 
@@ -19,9 +40,12 @@
 <script>
 
     let app=Vue.createApp({
+
         data:function(){
             return {
-                green:'hello vue 3!'
+                green:'hello vue 3!',
+                isVisible:true,
+                isVisibleshow:true
             }
         }
     })
