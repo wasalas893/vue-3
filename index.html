@@ -30,18 +30,21 @@
         [v-cloak]{
             display: none;
         }
+        input{
+            display: block;
+            margin: 10px;
+        }
     </style>
     
 
 </head>
 <body>
     <div id="app" v-cloak>
-        {{green}}
-
-        <input v-model="green"/>
+      
+        <login-from/>
 
         <hr/>
-        <button v-on:click="isVisible= !isVisible">Toggle button</button>
+        <button @click="togglebox">Toggle button</button>
         <div v-if="isVisible" class="box"></div>
        
        
@@ -62,8 +65,40 @@
                
                
             }
-        }
+        },
+        methods: {
+            togglebox(){
+                this.isVisible=!this.isVisible
+            }
+            
+        },
     })
+
+     app.component('login-from',{
+        template:`
+         <form @submit.prevent="handleSubmit">
+            <h3>{{title}}</h3>
+            <input type="email" v-model="email"/>
+            <input type="password" v-model="password"/>
+            <button>log in</button>
+            
+        </form>
+        
+        `,
+        data(){
+            return {
+                title:'login from',
+                email:'',
+                password:''
+            }
+         },
+         methods:{
+            handleSubmit(){
+                console.log(this.email,this.password);
+            }
+         }
+     })
+
     app.mount('#app')
 </script> 
 </body>
