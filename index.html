@@ -12,25 +12,39 @@
             width: 250px;
             height: 250px;
         }
+        .box.two{
+            background: rgb(38, 0, 255);
+            width: 250px;
+            height: 250px;
+        }
+        .box.three{
+            background: rgb(11, 2, 2);
+            width: 250px;
+            height: 250px;
+        }
         .box1{
             background: rgb(0, 255, 140);
             width: 250px;
             height: 250px;
+        }
+        [v-cloak]{
+            display: none;
         }
     </style>
     
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         {{green}}
 
         <input v-model="green"/>
 
         <hr/>
+        <button v-on:click="isVisible= !isVisible">Toggle button</button>
         <div v-if="isVisible" class="box"></div>
-        <hr/>
-        <div v-show="isVisibleshow"  class="box1"></div>
+       
+       
    </div>
    
 
@@ -44,8 +58,9 @@
         data:function(){
             return {
                 green:'hello vue 3!',
-                isVisible:true,
-                isVisibleshow:true
+                isVisible:false,
+               
+               
             }
         }
     })
